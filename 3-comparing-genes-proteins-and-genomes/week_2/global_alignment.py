@@ -18,9 +18,7 @@ def global_alignment(a, b, ru):
         for j in range(1, len(scores_matrix[0])):
             symbol_a = a[i-1]
             symbol_b = b[j-1]
-            match = 0
-            if symbol_a == symbol_b:
-                match = 1
+            match = Blosom_62[symbol_a][symbol_b]
             insertion = scores_matrix[i-1][j] - ru
             deletion = scores_matrix[i][j-1] - ru
             match_mismatch = scores_matrix[i-1][j-1] + match
@@ -32,21 +30,25 @@ def global_alignment(a, b, ru):
                 backtrack[i][j] = "-"
             elif scores_matrix[i][j] == match_mismatch:
                 backtrack[i][j] = "+"
+    print(scores_matrix)
 
     result_a = ""
     result_b = ""
     i, j = len(backtrack)-1, len(backtrack[0])-1
     while i > 0 and j > 0:
         if backtrack[i][j] == "+":
+            print("+", end="")
             result_a = a[i-1] + result_a 
             result_b = b[j-1] + result_b
             i-=1
             j-=1
         elif backtrack[i][j] == "|":
+            print("|", end="")
             result_a = a[i-1] + result_a
             result_b = "-" + result_b
             i-=1
         elif backtrack[i][j] == "-":
+            print("-", end="")
             result_a = "-" + result_a
             result_b = b[j-1] + result_b
             j-=1
@@ -61,16 +63,18 @@ def global_alignment(a, b, ru):
 
 
 if __name__ == "__main__":
-    a = "CGTAGGCTTAAGGTTA"
-    b = "ATAGATA"
+    a = "MEANLY"
+    b = "PLEASANTLY"
     ru = 5
-    with open("./datasets/dataset_247_3.txt") as f:
-        a = f.readline().strip()
-        b = f.readline().strip()
+    # with open("./datasets/dataset_247_3.txt") as f:
+    #     a = f.readline().strip()
+    #     b = f.readline().strip()
 
     max_alignment_score, string_a, string_b = global_alignment(a, b, ru)
-    with open("./results/global_alignment.txt", "w") as f:
-        f.write(str(max_alignment_score) + "\n")
-        f.write(string_a + "\n")
-        f.write(string_b + "\n")
+    print('')
+    print(string_a, string_b)
+    # with open("./results/global_alignment.txt", "w") as f:
+    #     f.write(str(max_alignment_score) + "\n")
+    #     f.write(string_a + "\n")
+    #     f.write(string_b + "\n")
 

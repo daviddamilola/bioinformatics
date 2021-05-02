@@ -37,6 +37,9 @@ def MiddleEdge(v, w, indel):
     mid_index = middle_column.index(max(middle_column))
 
     insertion = next_column[mid_index]
+
+    if mid_index == len(middle_column) - 1:
+        return (mid_index, middle_col_index), (mid_index, middle_col_index+1), "-"
     deletion = middle_column[mid_index + 1]
     match_mismatch = next_column[mid_index + 1]
     max_value = max(insertion, deletion, match_mismatch)
@@ -48,12 +51,10 @@ def MiddleEdge(v, w, indel):
     else:
         return (mid_index, middle_col_index), (mid_index+1, middle_col_index+1), "+"
 
-    return "IMPOSSIBLE ;-)"
-
 
 if __name__ == "__main__":
-    v = "FPPF"
-    w = "FFPF"
+    v = "MEANLY"
+    w = "PLEASANTLY"
     indel = 5
     path = './datasets/dataset_250_12.txt'
     with open(path) as f:
