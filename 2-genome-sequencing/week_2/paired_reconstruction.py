@@ -19,33 +19,13 @@ if __name__ == "__main__":
     divider = 0
     pairs = []
     
-    # with open('./datasets/dataset_204_16.txt') as f:
-    #     params = f.readline().strip().split(" ")
-    pair_length = 3
-    divider = 1
-    v = [
-        "ACC|ATA",
-        "ACT|ATT",
-        "ATA|TGA",
-        "ATT|TGA",
-        "CAC|GAT",
-        "CCG|TAC",
-        "CGA|ACT",
-        "CTG|AGC",
-        "CTG|TTC",
-        "GAA|CTT",
-        "GAT|CTG",
-        "GAT|CTG",
-        "TAC|GAT",
-        "TCT|AAG",
-        "TGA|GCT",
-        "TGA|TCT",
-        "TTC|GAA",
-    ]
-    for line in v:
-        pairs.append(line.strip().split("|"))
+    with open('./datasets/dataset_204_16.txt') as f:
+        params = f.readline().strip().split(" ")
+        pair_length = int(params[0])
+        divider = int(params[1])
+        for line in f:
+            pairs.append(line.strip().split("|"))
 
     a = PairedReconstruction(pairs, pair_length, divider)
-    print(a)
-    # with open('./results/paired_reconstruction.txt', 'w') as f:
-    #     f.write(PairedReconstruction(pairs, pair_length, divider))
+    with open('./results/paired_reconstruction.txt', 'w') as f:
+        f.write(PairedReconstruction(pairs, pair_length, divider))
