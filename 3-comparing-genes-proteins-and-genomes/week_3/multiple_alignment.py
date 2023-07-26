@@ -86,22 +86,25 @@ def Backtrack(backtrack, u, v, w):
     return u_align, v_align, w_align
 
 if __name__ == "__main__":
-    u = "ATATCCG"
-    v = "TCCGA"
-    w = "ATGTACTG"
+    u = "CCAATACGAC"
+    v = "GCCTTACGCT"
+    w = "CCCTAGCGGC"
+    # CCAATACGAC, GCCTTACGCT, and CCCTAGCGGC
     # CCAATACGAC, GCCTTACGCT, and CCCTAGCGGC
     path = './datasets/dataset_251_5.txt'
-    with open(path) as f:
-        u = f.readline().strip()
-        v = f.readline().strip()
-        w = f.readline().strip()
+    # with open(path) as f:
+    #     u = f.readline().strip()
+    #     v = f.readline().strip()
+    #     w = f.readline().strip()
     print(u)
     print(v)
     print(w)
     matrix, backtrack = MultipleAlignment(u, v, w)
     str_results = "\n".join(Backtrack(backtrack, u, v, w))
-    with open('./results/multiple_alignment.txt', 'w') as f:
-        f.write(str(matrix[-1][-1][-1]))
-        f.write("\n")
-        f.write(str_results)
+    print(matrix[-1][-1][-1])
+    print(str_results)
+    # with open('./results/multiple_alignment.txt', 'w') as f:
+    #     f.write(str(matrix[-1][-1][-1]))
+    #     f.write("\n")
+    #     f.write(str_results)
 
