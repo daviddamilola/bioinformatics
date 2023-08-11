@@ -21,6 +21,6 @@ if __name__ == "__main__":
         p_str = f.readline().strip()
     p = p_str.strip().split(" ")
     result = Breakpoints(p)
-    with open('./results/nreakpoints.txt', 'w') as f:
+    with open('./results/breakpoints.txt', 'w') as f:
         f.write(str(result))
     print("Breakpoints: ", result)
