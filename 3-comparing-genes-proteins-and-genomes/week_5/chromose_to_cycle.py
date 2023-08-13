@@ -11,11 +11,11 @@ def ChromosomeToCycle(chromosome: list[str]) -> list[int]:
 
 
 if __name__ == "__main__":
-    chromosomes = "+1 -2 -3 +4"
+    chromosomes = "(+1 -2 -3 +4)"
     path = "./datasets/dataset_8222_4.txt"
     with open(path) as f:
-        chromosomes = f.readline().strip()[1:-1]
-    chromosomes = chromosomes.split(" ")
+        chromosomes = f.readline().strip()
+    chromosomes = chromosomes[1:-1].replace(")(", "").split(" ")
     result = ChromosomeToCycle(chromosomes)
     print(result)
     with open('./results/chomosome_to_cycle.txt', 'w') as f:

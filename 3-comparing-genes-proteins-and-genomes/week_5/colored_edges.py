@@ -10,13 +10,16 @@ def ColoredEdges(chromosomes: list[list[str]]) -> list[tuple[int]]:
 
     return edges
 
+def FormatChromosome(chromosome_str: str) -> list[list[str]]:
+    chromosome_str = chromosome_str[1:-1].split(")(")
+    return  list(map(lambda chro: chro.split(" "), chromosome_str))
+
 if __name__ == "__main__":
-    chromosomes = "(+1 -2 -3)(+4 +5 -6)"
+    chromosomes = "(+1 -2 -3 -4)"
     path = "./datasets/dataset_8222_7.txt"
     with open(path) as f:
         chromosomes = f.readline().strip()
-    chromosomes = chromosomes[1:-1].split(")(")
-    chromosomes = list(map(lambda chro: chro.split(" "), chromosomes))
+    chromosomes = FormatChromosome(chromosomes)
     result = ColoredEdges(chromosomes)
     with open('./results/colored_edges.txt', 'w') as f:
         f.write(str(result)[1:-1])
