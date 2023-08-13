@@ -1,9 +1,9 @@
-def CycleToChromosome(cycle: list[int]) -> list[int]:
-    chromosome = []
+def CycleToChromosome(cycle: list[int]) -> list[str]:
+    chromosome: list[str] = []
     for index in range(0, len(cycle), 2):
         val = cycle[index]
-        cycleNo = int((index / 2) + 1)
-        chromosome.append("-"+str(cycleNo)) if val % 2 == 0 else chromosome.append("+"+str(cycleNo))
+        cycleNo = int((val+1) // 2)
+        chromosome.append("-"+str(cycleNo) if val % 2 == 0 else "+"+str(cycleNo))
     return chromosome
 
 
@@ -16,6 +16,5 @@ if __name__ == "__main__":
         cycle = p_str.split(" ")
     cycle = list(map(lambda x: int(x), cycle))
     result = CycleToChromosome(cycle)
-    print(result)
     with open('./results/cycle_to_chomosome.txt', 'w') as f:
         f.write("(" + " ".join(result) + ")")

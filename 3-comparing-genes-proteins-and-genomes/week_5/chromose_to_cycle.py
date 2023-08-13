@@ -1,6 +1,6 @@
-def ChromosomeToCycle(chromosomes: list[str]) -> list[int]:
+def ChromosomeToCycle(chromosome: list[str]) -> list[int]:
     cycle = []
-    for valStr in chromosomes:
+    for valStr in chromosome:
         val = int(valStr)
         postiveVal = abs(val)
         if val > 0:
@@ -14,9 +14,8 @@ if __name__ == "__main__":
     chromosomes = "+1 -2 -3 +4"
     path = "./datasets/dataset_8222_4.txt"
     with open(path) as f:
-        p_str = f.readline().strip()[1:-1]
-        chromosomes = p_str.split(" ")
-    print(chromosomes)
+        chromosomes = f.readline().strip()[1:-1]
+    chromosomes = chromosomes.split(" ")
     result = ChromosomeToCycle(chromosomes)
     print(result)
     with open('./results/chomosome_to_cycle.txt', 'w') as f:
