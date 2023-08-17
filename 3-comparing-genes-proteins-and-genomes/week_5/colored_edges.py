@@ -11,6 +11,10 @@ def ColoredEdges(chromosomes: list[list[str]]) -> list[tuple[int]]:
     return edges
 
 def FormatChromosome(chromosome_str: str) -> list[list[str]]:
+    """
+    Formats a chromosome from this format `(+1 -2 -3 -4)(+5 -6)`\n
+    to `[["+1", "-2", "-3", "-4"], ["+5", "-6"]]`
+    """
     chromosome_str = chromosome_str[1:-1].split(")(")
     return  list(map(lambda chro: chro.split(" "), chromosome_str))
 
