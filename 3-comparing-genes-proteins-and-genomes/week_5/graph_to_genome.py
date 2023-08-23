@@ -40,8 +40,14 @@ def FormatGraph(graph_str: str) -> list[tuple[int]]:
         graph.append((first, second))
     return graph
 
+def FormatGenome(genome: list[list[str]]) -> str:
+    result_str = ""
+    for chromosome in genome:
+        result_str += "(" + " ".join(chromosome) + ")"
+    return result_str
+
 if __name__ == "__main__":
-    graph_str ="(2, 4), (3, 6), (5, 1), (7, 9), (10, 12), (11, 8)"
+    graph_str ="(2, 7), (3, 6), (1, 5), (8, 1)"
 
     path = "./datasets/dataset_8222_8.txt"
     with open(path) as f:

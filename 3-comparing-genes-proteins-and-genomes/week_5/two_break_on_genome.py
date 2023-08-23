@@ -2,7 +2,7 @@ from colored_edges import ColoredEdges, FormatChromosome
 from two_break_on_genome_graph import TwoBreakOnGenomeGraph
 from graph_to_genome import GraphToGenome
 
-def TwoBreakOnGenome(genome: str, indices: list[int]) -> list[tuple[int]]:
+def TwoBreakOnGenome(genome: str, indices: list[int]) -> list[list[str]]:
     chromosomes = FormatChromosome(genome)
     graph = ColoredEdges(chromosomes)
     new_graph = TwoBreakOnGenomeGraph(graph, indices)
