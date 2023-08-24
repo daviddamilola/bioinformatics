@@ -23,7 +23,6 @@ def TwoBreakSorting(genome_a: str, genome_b: str) -> list[str]:
             cycles = new_cycles
             current_chromosome = chromosome_str
             genome_sequence.append(chromosome_str)
-            print()
         else:
             x = indices[2]
             indices[2] = indices[3]
@@ -36,7 +35,6 @@ def TwoBreakSorting(genome_a: str, genome_b: str) -> list[str]:
                 cycles = new_cycles
                 current_chromosome = chromosome_str
                 genome_sequence.append(chromosome_str)
-                print()
             else:
                 raise "No indices gave a lower cycle count"
     return genome_sequence
